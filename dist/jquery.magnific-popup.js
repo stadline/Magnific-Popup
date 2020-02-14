@@ -755,6 +755,11 @@ MagnificPopup.prototype = {
 		return (  (mfp.isIE7 ? _document.height() : document.body.scrollHeight) > (winHeight || _window.height()) );
 	},
 	_setFocus: function() {
+		// Needed For React Modal in dcm to work
+		if (window.reactModal) {
+			return;
+		}
+
 		(mfp.st.focus ? mfp.content.find(mfp.st.focus).eq(0) : mfp.wrap).focus();
 	},
 	_onFocusIn: function(e) {
